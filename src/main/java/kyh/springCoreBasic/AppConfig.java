@@ -2,6 +2,7 @@ package kyh.springCoreBasic;
 
 import kyh.springCoreBasic.discount.DiscountPolicy;
 import kyh.springCoreBasic.discount.FixDiscountPolicy;
+import kyh.springCoreBasic.discount.RateDiscountPolicy;
 import kyh.springCoreBasic.member.Member;
 import kyh.springCoreBasic.member.MemberService;
 import kyh.springCoreBasic.member.MemberServiceImpl;
@@ -24,6 +25,6 @@ public class AppConfig {
     }
 
     public DiscountPolicy discountPolicy() {
-        return new FixDiscountPolicy();
+        return new RateDiscountPolicy();
     }
 }
