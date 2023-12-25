@@ -1,7 +1,7 @@
-package order;
+package kyh.springCoreBasic.order;
 
-import discount.DiscountPolicy;
-import discount.FixDiscountPolicy;
+import kyh.springCoreBasic.discount.DiscountPolicy;
+import kyh.springCoreBasic.discount.FixDiscountPolicy;
 import kyh.springCoreBasic.member.Member;
 import kyh.springCoreBasic.member.MemberRepository;
 import kyh.springCoreBasic.member.MemoryMemberRepository;

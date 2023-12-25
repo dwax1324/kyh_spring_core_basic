@@ -1,4 +1,4 @@
-package discount;
+package kyh.springCoreBasic.discount;
 
 import kyh.springCoreBasic.member.Member;
 

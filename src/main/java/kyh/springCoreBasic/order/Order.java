@@ -1,4 +1,4 @@
-package order;
+package kyh.springCoreBasic.order;
 
 public class Order {
     private Long memberId;
