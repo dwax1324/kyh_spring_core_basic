@@ -14,5 +14,6 @@ public class MemberApp {
         Member findMember = memberService.findMember(1L);
         System.out.println("newMember = " + member1.getName());
         System.out.println("findMember = " + findMember.getName());
+        System.out.println("isSame = " + (member1 == findMember));
     }
 }
