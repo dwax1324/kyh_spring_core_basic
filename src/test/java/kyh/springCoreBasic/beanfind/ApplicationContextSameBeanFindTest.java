@@ -2,7 +2,9 @@ package kyh.springCoreBasic.beanfind;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.Map;
 import kyh.springCoreBasic.AppConfig;
+import kyh.springCoreBasic.member.Member;
 import kyh.springCoreBasic.member.MemberRepository;
 import kyh.springCoreBasic.member.MemberService;
 import kyh.springCoreBasic.member.MemberServiceImpl;
@@ -21,14 +23,33 @@ public class ApplicationContextSameBeanFindTest {
 
     @Test
     @DisplayName("타입으로 조회시 같은 타입이 둘 이상 있으면, 중복 오류가 발생한다")
-    void findBeanByName() {
+    void findBeanByDuplicate() {
         Assertions.assertThrows(NoUniqueBeanDefinitionException.class,()->ac.getBean(MemberRepository.class));
+    }
+
+    @Test
+    @DisplayName("타입으로 조회시 같은 타입이 둘 이상 있으면, 빈 이름을 지정하면 된다")
+    void findBeanByName() {
+        MemberRepository memberRepository1 = ac.getBean("memberRepository1", MemberRepository.class);
+        assertThat(memberRepository1).isInstanceOf(MemberRepository.class);
+    }
+
+    @Test
+    @DisplayName("특정 타입을 모두 조회하기")
+    void findBeanByType() {
+        Map<String, MemberRepository> beansOfType = ac.getBeansOfType(MemberRepository.class);
+        for (String key : beansOfType.keySet()) {
+            System.out.print("key = " + key + ", ");
+            System.out.println("value = " + beansOfType.get(key));
+        }
+        System.out.println("beansOfType = " + beansOfType);
+        assertThat(beansOfType.size()).isEqualTo(2);
     }
 
     @Configuration
     static class SameBeanConfig { // NoUniqueBeanDefinitionException 발생
         @Bean
-        public MemberRepository memberRepository() {
+        public MemberRepository memberRepository1() {
             return new MemoryMemberRepository();
         }
 
