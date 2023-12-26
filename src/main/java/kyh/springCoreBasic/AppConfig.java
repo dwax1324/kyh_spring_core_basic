@@ -13,6 +13,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 
+/*
+
+ */
+
 @Configuration
 public class AppConfig {
     @Bean
@@ -25,7 +29,7 @@ public class AppConfig {
     }
 
     @Bean
-    private static MemoryMemberRepository memberRepository() {
+    public MemoryMemberRepository memberRepository() {
         return new MemoryMemberRepository();
     }
 
